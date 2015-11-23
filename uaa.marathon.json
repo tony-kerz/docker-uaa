@@ -1,0 +1,33 @@
+{
+  "id": "uaa",
+  "cpus": 0.50,
+  "mem": 1024,
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "healthagen/uaa:2.7.1",
+      "forcePullImage": true,
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "containerPort": 8080
+        }
+      ]
+    },
+    "volumes": [
+      {
+        "containerPath": "/var/run/docker.sock",
+        "hostPath": "/var/run/docker.sock",
+        "mode": "RO"
+      }
+    ]
+  },
+  "healthChecks": [
+    {
+      "path": "/varz"
+    }
+  ],
+  "labels": {
+    "VIRTUAL_HOST": "uaa.x.healthagen.com"
+  }
+}

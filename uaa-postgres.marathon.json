@@ -1,0 +1,33 @@
+{
+  "id": "uaa-postgres",
+  "cpus": 1,
+  "mem": 1024,
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "postgres:9.5",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "containerPort": 5432
+        }
+      ]
+    },
+    "volumes": [
+      {
+        "containerPath": "/var/lib/postgresql/data",
+        "hostPath": "/var/lib/uaa-postgres",
+        "mode": "RW"
+      }
+    ]
+  },
+  "healthChecks": [
+    {
+      "protocol": "TCP",
+      "gracePeriodSeconds": 300
+    }
+  ],
+  "constraints": [
+    ["hostname", "CLUSTER", "#{slaveHost}"]
+  ]
+}
