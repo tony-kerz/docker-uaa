@@ -27,6 +27,9 @@
       "path": "/varz"
     }
   ],
+  "env": {
+    "PUBLIC_HOST": "uaa.x.healthagen.com"
+  },
   "labels": {
     "VIRTUAL_HOST": "uaa.x.healthagen.com"
   }

@@ -10,4 +10,7 @@ else
   export DB_PORT_5432_TCP_PORT=${toks[1]}
 fi
 
+# HOST should be set by marathon to dns-name of slave host
+export HOST=PRIVATE_HOST
+
 $CATALINA_HOME/bin/catalina.sh run
