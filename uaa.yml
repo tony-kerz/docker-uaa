@@ -11,8 +11,12 @@ zones:
    hostnames:
      - localhost
      - 0.0.0.0
-     - ${PRIVATE_HOST}
-     - ${PUBLIC_HOST}
+     - ip-10-0-1-78.ec2.internal
+     - ip-10-0-1-79.ec2.internal
+     - ip-10-0-1-80.ec2.internal
+     - uaa.x.healthagen.com
+#     - ${PRIVATE_HOST}
+#     - ${PUBLIC_HOST}
 
 oauth:
   client:
