@@ -36,7 +36,7 @@ curl -sSv -X POST -H 'Content-type: application/json' master.mesos:8080/v2/apps 
 ```
 ```
 #docker run --rm -e DB_PORT_5432_TCP_ADDR=10.0.1.80 -e DB_PORT_5432_TCP_PORT=5432 healthagen/uaa:2.7.1
-docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:ro healthagen/uaa:2.7.1
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:ro healthagen/uaa:2.7.2
 ```
 ```
 curl -sSv -X POST -H 'Content-type: application/json' master.mesos:8080/v2/apps -d \
@@ -48,7 +48,7 @@ curl -sSv -X POST -H 'Content-type: application/json' master.mesos:8080/v2/apps 
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "healthagen/uaa:2.7.1",
+      "image": "healthagen/uaa:2.7.2",
       "forcePullImage": true,
       "network": "BRIDGE",
       "portMappings": [
@@ -67,9 +67,12 @@ curl -sSv -X POST -H 'Content-type: application/json' master.mesos:8080/v2/apps 
   },
   "healthChecks": [
     {
-      "path": "/api"
+      "path": "/login"
     }
   ],
+  "env": {
+    "PUBLIC_HOST": "uaa.x.healthagen.com"
+  },
   "labels": {
     "VIRTUAL_HOST": "uaa.x.healthagen.com"
   }

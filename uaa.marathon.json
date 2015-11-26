@@ -5,7 +5,7 @@
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "healthagen/uaa:2.7.1",
+      "image": "healthagen/uaa:2.7.2",
       "forcePullImage": true,
       "network": "BRIDGE",
       "portMappings": [
@@ -24,7 +24,7 @@
   },
   "healthChecks": [
     {
-      "path": "/varz"
+      "path": "/login"
     }
   ],
   "env": {
