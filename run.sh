@@ -10,8 +10,8 @@ toks=($pgLoc)
 export DB_PORT_5432_TCP_ADDR=${toks[0]}
 export DB_PORT_5432_TCP_PORT=${toks[1]}
 
-
 # HOST should be set by marathon to dns-name of slave host
 export PRIVATE_HOST=$HOST
+export PUBLIC_HOST=$PUBLIC_HOST
 
 $CATALINA_HOME/bin/catalina.sh run

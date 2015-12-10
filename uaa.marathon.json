@@ -5,7 +5,7 @@
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "healthagen/uaa:2.7.2",
+      "image": "#{image}",
       "forcePullImage": true,
       "network": "BRIDGE",
       "portMappings": [
@@ -24,13 +24,14 @@
   },
   "healthChecks": [
     {
-      "path": "/login"
+      "path": "/healthz"
     }
   ],
   "env": {
-    "PUBLIC_HOST": "uaa.x.healthagen.com"
+    "UAA_CONFIG_URL": "#{configUrl}",
+    "PUBLIC_HOST": "#{vHost}"
   },
   "labels": {
-    "VIRTUAL_HOST": "uaa.x.healthagen.com"
+    "VIRTUAL_HOST": "#{vHost}"
   }
 }
