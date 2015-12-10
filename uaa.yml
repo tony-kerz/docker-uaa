@@ -7,19 +7,17 @@ database:
   password: ${DB_ENV_PASS:}
 
 jwt:
-   token:
-      signing-key: |
-        my-s3cret-signing-key
-      verification-key: |
-        my-s3cret-signing-key
+  token:
+    signing-key: my-s3cret-signing-key
+#    verification-key: my-s3cret-signing-key
 
 zones:
- internal:
-   hostnames:
-     - localhost
-     - ${PRIVATE_HOST}
-     - uaa.x.healthagen.com
-    #  - ${PUBLIC_HOST}
+  internal:
+    hostnames:
+      - localhost
+      - ${PRIVATE_HOST}
+      - uaa.x.healthagen.com
+      #  - ${PUBLIC_HOST}
 
 oauth:
   client:
