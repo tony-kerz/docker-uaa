@@ -7,7 +7,7 @@ ENV UAA_VER 2.7.2
 ENV TC_VER 8.0.28
 
 ADD run.sh /tmp/
-ADD uaa.yml /uaa/uaa.yml
+#ADD uaa.yml /uaa/uaa.yml
 RUN chmod +x /tmp/run.sh
 
 RUN wget -q https://archive.apache.org/dist/tomcat/tomcat-8/v$TC_VER/bin/apache-tomcat-$TC_VER.tar.gz

@@ -70,10 +70,13 @@ curl -sSv -X POST -H 'Content-type: application/json' master.mesos:8080/v2/apps 
       }
     ]
   },
+  "healthChecks": [
+    {
+      "path": "/healthz"
+    }
+  ],
   "env": {
-    "UAA_CONFIG_URL": "https://raw.githubusercontent.com/tony-kerz/docker-uaa/master/uaa.yml"
-  },
-  "env": {
+    "UAA_CONFIG_URL": "https://raw.githubusercontent.com/tony-kerz/docker-uaa/tk/wip/uaa.yml",
     "PUBLIC_HOST": "uaa.x.healthagen.com"
   },
   "labels": {

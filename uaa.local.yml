@@ -1,0 +1,44 @@
+spring_profiles: postgresql
+
+database:
+  driverClassName: org.postgresql.Driver
+  url: jdbc:postgresql://localhost:5432/uaa.local
+  username: postgres
+  password: password
+
+zones:
+ internal:
+   hostnames:
+     - localhost
+
+oauth:
+  client:
+    override: true
+    autoapprove:
+      - cf
+      - client-1
+  clients:
+    cf:
+      id: cf
+      authorized-grant-types: implicit
+      scope: zones.uaa.admin
+      authorities: uaa.none
+      redirect-uri: https://uaa.cloudfoundry.com/redirect/cf
+    web-client-1:
+      id: web-client-1
+      authorized-grant-types: implicit
+      scope: web-client-1.scope-1
+      authorities: uaa.none
+      redirect-uri: https://uaa.cloudfoundry.com/redirect/web-client-1
+    resource-server:
+      id: resource-server
+      secret: s3cret
+      authorized-grant-types: client_credentials
+      scope: scim.read,scim.write,password.write
+      authorities: uaa.resource,scim.read,scim.write,password.write
+
+scim:
+  username_pattern: '[a-z0-9+\-_.@]+'
+  users:
+    - admin|s3cret|tony.kerz@healthagen.com|tony|kerz|zones.uaa.admin
+    - user-1|s3cret|tony.kerz@healthagen.com|tony|kerz|web-client-1.scope-1

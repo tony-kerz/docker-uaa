@@ -6,46 +6,55 @@ database:
   username: ${DB_ENV_USER:postgres}
   password: ${DB_ENV_PASS:}
 
+jwt:
+   token:
+      signing-key: |
+        my-s3cret-signing-key
+      verification-key: |
+        my-s3cret-signing-key
+
 zones:
  internal:
    hostnames:
      - localhost
-     - 0.0.0.0
-     - ip-10-0-1-78.ec2.internal
-     - ip-10-0-1-79.ec2.internal
-     - ip-10-0-1-80.ec2.internal
+     - ${PRIVATE_HOST}
      - uaa.x.healthagen.com
-#     - ${PRIVATE_HOST}
-#     - ${PUBLIC_HOST}
+    #  - ${PUBLIC_HOST}
 
 oauth:
   client:
     override: true
     autoapprove:
-      - myresourceserver_shell
+      - cf
+      - web-client-1
   clients:
-    mywebapp:
-      id: mywebapp
-      secret: changeme
-      authorized-grant-types: authorization_code
-      scope: myresourceserver.scope1,myresourceserver.scope2,openid,password.write
+    cf:
+      id: cf
+      authorized-grant-types: implicit
+      scope: zones.uaa.admin
       authorities: uaa.none
-      redirect-uri: http://localhost:3000/authorize
-    myresourceserver:
-      id: myresourceserver
-      secret: changemetoo
+      redirect-uri: https://uaa.cloudfoundry.com/redirect/cf
+    web-client-1:
+      id: web-client-1
+      authorized-grant-types: implicit
+      scope: web-client-1.scope-1
+      authorities: uaa.none
+      redirect-uri: http://localhost:8080/,https://uaa.cloudfoundry.com/redirect/web-client-1
+    web-client-2:
+      id: web-client-2
+      authorized-grant-types: authorization_code,refresh_token
+      scope: web-client-2.scope-1
+      authorities: uaa.none
+      redirect-uri: http://localhost:8080/,https://uaa.cloudfoundry.com/redirect/web-client-2
+    resource-server:
+      id: resource-server
+      secret: s3cret
       authorized-grant-types: client_credentials
       scope: scim.read,scim.write,password.write
       authorities: uaa.resource,scim.read,scim.write,password.write
-    myresourceserver_shell:
-      id: myresourceserver_shell
-      authorized-grant-types: implicit
-      scope: myresourceserver.scope1,myresourceserver.scope2,openid,password.write
-      authorities: uaa.none
-      redirect-uri: http://myresourceserver.shell
 
 scim:
   username_pattern: '[a-z0-9+\-_.@]+'
   users:
-    - paul|wombat|paul@test.org|Paul|Smith|openid,myresourceserver.scope1,myresourceserver.scope2
-    - stefan|wallaby|stefan@test.org|Stefan|Schmidt|openid,myresourceserver.scope1,myresourceserver.scope2
+    - admin|s3cret|tony.kerz@healthagen.com|tony|kerz|zones.uaa.admin
+    - user-1|s3cret|tony.kerz@healthagen.com|tony|kerz|web-client-1.scope-1,web-client-2.scope-1
