@@ -8,6 +8,7 @@ database:
 
 jwt:
   token:
+    typeHeader: JWT
     signing-key: my-s3cret-signing-key
     verification-key: my-s3cret-signing-key
 
