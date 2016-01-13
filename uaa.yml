@@ -36,7 +36,7 @@ oauth:
     web-client-1:
       id: web-client-1
       authorized-grant-types: implicit
-      scope: web-client-1.scope-1
+      scope: web-client-1.scope-1,app:smart-transitions,patient:read,referral:write,referral-template:write,root:read,root:write
       authorities: uaa.none
       redirect-uri: http://localhost:8080/,https://uaa.cloudfoundry.com/redirect/web-client-1
     web-client-2:
@@ -57,3 +57,8 @@ scim:
   users:
     - admin|s3cret|tony.kerz@healthagen.com|tony|kerz|zones.uaa.admin
     - user-1|s3cret|tony.kerz@healthagen.com|tony|kerz|web-client-1.scope-1,web-client-2.scope-1
+    - st-user-1|s3cret|tony.kerz@healthagen.com|tony|kerz|app:smart-transitions,patient:read,referral:write,referral-template:write
+    - st-user-2|s3cret|tony.kerz@healthagen.com|tony|kerz|app:smart-transitions,referral-template:write
+    - st-user-3|s3cret|tony.kerz@healthagen.com|tony|kerz|app:smart-transitions,patient:read,referral:write
+    - admin-1|s3cret|tony.kerz@healthagen.com|tony|kerz|root:read
+    - admin-2|s3cret|tony.kerz@healthagen.com|tony|kerz|root:write
