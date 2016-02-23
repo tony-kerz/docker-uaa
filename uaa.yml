@@ -26,6 +26,7 @@ oauth:
     autoapprove:
       - cf
       - web-client-1
+      - smart-transitions
   clients:
     cf:
       id: cf
@@ -51,6 +52,12 @@ oauth:
       authorized-grant-types: client_credentials
       scope: scim.read,scim.write,password.write
       authorities: uaa.resource,scim.read,scim.write,password.write
+    smart-transitions:
+      id: smart-transitions
+      authorized-grant-types: implicit
+      scope: app:st,app:st:out,app:st:in,app:st:cancel,app:st:notify,app:st:assign,app:st:net-cfg,app:st:notify-cfg,patient:read,patient:create,patient:update,referral:read,referral:write,org:write,template:write,quest:write
+      authorities: uaa.none
+      redirect-uri: http://localhost:8080/,http://smart-transitions-dev.medslc.medicity.com/,http://smart-transitions-test.medslc.medicity.com/
 
 scim:
   username_pattern: '[a-z0-9+\-_.@]+'
@@ -62,3 +69,7 @@ scim:
     - st-user-3|s3cret|tony.kerz@healthagen.com|tony|kerz|app:smart-transitions,patient:read,referral:write
     - admin-1|s3cret|tony.kerz@healthagen.com|tony|kerz|root:read
     - admin-2|s3cret|tony.kerz@healthagen.com|tony|kerz|root:write
+    - send-1|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:out,app:st:cancel,app:st:notify,patient:create,referral:write
+    - send-lead-1|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:out,app:st:cancel,app:st:assign,patient:create,referral:write
+    - receive-1|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:in,app:st:cancel,app:st:notify,patient:read,referral:write
+    - admin-1|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:net-cfg,app:st:notify-cfg,template:write,quest:write,org:write
