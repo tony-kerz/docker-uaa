@@ -65,8 +65,11 @@ scim:
     - admin|s3cret|tony.kerz@healthagen.com|tony|kerz|zones.uaa.admin
     - user-1|s3cret|tony.kerz@healthagen.com|tony|kerz|web-client-1.scope-1,web-client-2.scope-1
     - st-send-1|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:out,app:st:cancel,app:st:notify,patient:create,referral:write
+    - st-send-2|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:out,app:st:cancel,app:st:notify,patient:read,referral:read
     - st-send-lead-1|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:out,app:st:cancel,app:st:assign,patient:create,referral:write
     - st-receive-1|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:in,app:st:cancel,app:st:notify,patient:read,referral:write
+    - st-receive-2|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:in,app:st:cancel,app:st:notify,patient:read,referral:read
     - st-admin-1|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:net-cfg,app:st:notify-cfg,template:write,quest:write,org:write
+    - st-admin-2|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:net-cfg,app:st:notify-cfg,template:read,quest:read,org:read
     - admin-10|s3cret|tony.kerz@healthagen.com|tony|kerz|root:read
     - admin-11|s3cret|tony.kerz@healthagen.com|tony|kerz|root:write
