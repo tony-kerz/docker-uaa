@@ -7,19 +7,18 @@ database:
   password: ${DB_ENV_PASS:}
 
 jwt:
-   token:
-      signing-key: |
-        my-s3cret-signing-key
-      verification-key: |
-        my-s3cret-signing-key
+  token:
+    typeHeader: JWT
+    signing-key: my-s3cret-signing-key
+    verification-key: my-s3cret-signing-key
 
 zones:
- internal:
-   hostnames:
-     - localhost
-     - ${PRIVATE_HOST}
-     - uaa.x.healthagen.com
-    #  - ${PUBLIC_HOST}
+  internal:
+    hostnames:
+      - localhost
+      - ${PRIVATE_HOST}
+      - uaa.x.healthagen.com
+      #  - ${PUBLIC_HOST}
 
 oauth:
   client:
@@ -27,6 +26,7 @@ oauth:
     autoapprove:
       - cf
       - web-client-1
+      - smart-transitions
   clients:
     cf:
       id: cf
@@ -37,7 +37,7 @@ oauth:
     web-client-1:
       id: web-client-1
       authorized-grant-types: implicit
-      scope: web-client-1.scope-1
+      scope: web-client-1.scope-1,app:smart-transitions,patient:read,referral:write,referral-template:write,root:read,root:write
       authorities: uaa.none
       redirect-uri: http://localhost:8080/,https://uaa.cloudfoundry.com/redirect/web-client-1
     web-client-2:
@@ -52,9 +52,24 @@ oauth:
       authorized-grant-types: client_credentials
       scope: scim.read,scim.write,password.write
       authorities: uaa.resource,scim.read,scim.write,password.write
+    smart-transitions:
+      id: smart-transitions
+      authorized-grant-types: implicit
+      scope: app:st,app:st:out,app:st:in,app:st:cancel,app:st:notify,app:st:assign,app:st:net-cfg,app:st:notify-cfg,patient:read,patient:create,patient:update,referral:read,referral:write,org:read,org:write,template:read,template:write,quest:read,quest:write
+      authorities: uaa.none
+      redirect-uri: http://localhost:8080/,http://smart-transitions-dev.medslc.medicity.com/,http://smart-transitions-test.medslc.medicity.com/
 
 scim:
   username_pattern: '[a-z0-9+\-_.@]+'
   users:
     - admin|s3cret|tony.kerz@healthagen.com|tony|kerz|zones.uaa.admin
     - user-1|s3cret|tony.kerz@healthagen.com|tony|kerz|web-client-1.scope-1,web-client-2.scope-1
+    - st-send-1|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:out,app:st:cancel,app:st:notify,patient:create,referral:write
+    - st-send-2|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:out,app:st:cancel,app:st:notify,patient:read,referral:read
+    - st-send-lead-1|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:out,app:st:cancel,app:st:assign,patient:create,referral:write
+    - st-receive-1|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:in,app:st:cancel,app:st:notify,patient:read,referral:write
+    - st-receive-2|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:in,app:st:cancel,app:st:notify,patient:read,referral:read
+    - st-admin-1|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:net-cfg,app:st:notify-cfg,template:write,quest:write,org:write
+    - st-admin-2|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:net-cfg,app:st:notify-cfg,template:read,quest:read,org:read
+    - admin-10|s3cret|tony.kerz@healthagen.com|tony|kerz|root:read
+    - admin-11|s3cret|tony.kerz@healthagen.com|tony|kerz|root:write

@@ -11,6 +11,10 @@ zones:
    hostnames:
      - localhost
 
+#jwt:
+#  token:
+#    typeHeader: JWT
+
 oauth:
   client:
     override: true
