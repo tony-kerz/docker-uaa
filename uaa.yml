@@ -55,7 +55,7 @@ oauth:
     smart-transitions:
       id: smart-transitions
       authorized-grant-types: implicit
-      scope: app:st,app:st:out,app:st:in,app:st:cancel,app:st:notify,app:st:assign,app:st:net-cfg,app:st:notify-cfg,patient:read,patient:create,patient:update,referral:read,referral:write,org:write,template:write,quest:write
+      scope: app:st,app:st:out,app:st:in,app:st:cancel,app:st:notify,app:st:assign,app:st:net-cfg,app:st:notify-cfg,patient:read,patient:create,patient:update,referral:read,referral:write,org:read,org:write,template:read,template:write,quest:read,quest:write
       authorities: uaa.none
       redirect-uri: http://localhost:8080/,http://smart-transitions-dev.medslc.medicity.com/,http://smart-transitions-test.medslc.medicity.com/
 

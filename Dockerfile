@@ -3,7 +3,7 @@ MAINTAINER healthagen
 
 ENV UAA_CONFIG_PATH /uaa
 ENV CATALINA_HOME /tomcat
-ENV UAA_VER 3.0.0-SNAPSHOT
+ENV UAA_VER 3.1.0-jwt-typ
 ENV TC_VER 8.0.28
 
 ADD run.sh /tmp/
