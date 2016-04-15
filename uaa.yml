@@ -55,7 +55,7 @@ oauth:
     smart-transitions:
       id: smart-transitions
       authorized-grant-types: implicit
-      scope: app:st,app:st:out,app:st:in,app:st:cancel,app:st:notify,app:st:assign,app:st:net-cfg,app:st:notify-cfg,patient:read,patient:create,patient:update,referral:read,referral:write,org:read,org:write,template:read,template:write,quest:read,quest:write
+      scope: app:st,app:st:out,app:st:in,app:st:cancel,app:st:notify,app:st:assign,app:st:net-cfg,app:st:notify-cfg,patient:read,patient:create,patient:update,referral:read,referral:write,org:read,org:write,template:read,template:write,quest:read,quest:write,net:6602F212-C3BE-47E7-B5C1-E4193E0EF6E1,net:AC9BA2AA-0360-4CAA-8EBB-28D653F0985E
       authorities: uaa.none
       redirect-uri: http://localhost:8080/,http://smart-transitions-dev.medslc.medicity.com/,http://smart-transitions-test.medslc.medicity.com/
 
@@ -64,14 +64,17 @@ scim:
   users:
     - admin|s3cret|tony.kerz@healthagen.com|tony|kerz|zones.uaa.admin
     - user-1|s3cret|tony.kerz@healthagen.com|tony|kerz|web-client-1.scope-1,web-client-2.scope-1,profile,openid
-    - st-send-1|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:out,app:st:cancel,app:st:notify,patient:create,referral:write
-    - st-send-2|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:out,app:st:cancel,app:st:notify,patient:read,referral:read
-    - st-send-lead-1|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:out,app:st:cancel,app:st:assign,patient:create,referral:write
-    - st-receive-1|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:in,app:st:cancel,app:st:notify,patient:read,referral:write
-    - st-receive-2|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:in,app:st:cancel,app:st:notify,patient:read,referral:read
-    - st-admin-1|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:net-cfg,app:st:notify-cfg,template:write,quest:write,org:write
-    - st-admin-2|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:net-cfg,app:st:notify-cfg,template:read,quest:read,org:read
-    - st-user-1|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:out,app:st:in,app:st:cancel,app:st:notify,patient:create,referral:write,app:st:net-cfg,app:st:notify-cfg,template:write,quest:write,org:write
+    - st-send-1|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:out,app:st:cancel,app:st:notify,patient:create,referral:write,net:6602F212-C3BE-47E7-B5C1-E4193E0EF6E1
+    - st-send-2|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:out,app:st:cancel,app:st:notify,patient:read,referral:read,net:6602F212-C3BE-47E7-B5C1-E4193E0EF6E1
+    - st-send-3|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:out,app:st:notify,patient:create,referral:write,net:6602F212-C3BE-47E7-B5C1-E4193E0EF6E1
+    - st-send-lead-1|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:out,app:st:cancel,app:st:assign,patient:create,referral:write,net:6602F212-C3BE-47E7-B5C1-E4193E0EF6E1
+    - st-receive-1|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:in,app:st:cancel,app:st:notify,patient:read,referral:write,net:6602F212-C3BE-47E7-B5C1-E4193E0EF6E1
+    - st-receive-2|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:in,app:st:cancel,app:st:notify,patient:read,referral:read,net:6602F212-C3BE-47E7-B5C1-E4193E0EF6E1
+    - st-receive-3|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:in,app:st:notify,patient:read,referral:write,net:6602F212-C3BE-47E7-B5C1-E4193E0EF6E1
+    - st-admin-1|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:net-cfg,app:st:notify-cfg,template:write,quest:write,org:write,net:6602F212-C3BE-47E7-B5C1-E4193E0EF6E1
+    - st-admin-2|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:net-cfg,app:st:notify-cfg,template:read,quest:read,org:read,net:6602F212-C3BE-47E7-B5C1-E4193E0EF6E1
+    - st-user-1|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:out,app:st:in,app:st:cancel,app:st:notify,patient:create,referral:write,app:st:net-cfg,app:st:notify-cfg,template:write,quest:write,org:write,net:6602F212-C3BE-47E7-B5C1-E4193E0EF6E1
+    - st-user-2|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st,app:st:out,app:st:in,app:st:cancel,app:st:notify,patient:create,referral:write,app:st:net-cfg,app:st:notify-cfg,template:write,quest:write,org:write,net:AC9BA2AA-0360-4CAA-8EBB-28D653F0985E
     - st-user-nil|s3cret|tony.kerz@healthagen.com|tony|kerz|app:st
     - admin-10|s3cret|tony.kerz@healthagen.com|tony|kerz|root:read
     - admin-11|s3cret|tony.kerz@healthagen.com|tony|kerz|root:write
